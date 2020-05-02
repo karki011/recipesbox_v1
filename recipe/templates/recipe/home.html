@@ -1,6 +1,10 @@
-{% for recipe in recipes %}
-<h3>
-  <a href="">{{recipe.title}}</a>
-  {{recipe.id}}
-</h3>
-{% endfor %}
+{% extends 'base.html' %} {% block content %} {% for recipe in recipes %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">
+      <a href="{% url 'recipes:recipe_detail' recipe.id %}">{{recipe.title}}</a>
+    </h1>
+  </div>
+</div>
+{% endfor %} {% endblock content %}

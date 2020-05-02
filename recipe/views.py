@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Recipe
+from .models import Recipe, Author
 
 
 def index(request):
@@ -7,6 +7,13 @@ def index(request):
     return render(request, 'recipe/home.html', {'recipes': recipes})
 
 
-def detail(request, recipe_id):
+def recipe_detail(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
+    print(recipe.author.id)
     return render(request, 'recipe/recipeDetail.html', {'recipe': recipe})
+
+
+def author_detail(request, author_id):
+    author = get_object_or_404(Author, pk=author_id)
+    print(author)
+    return render(request, 'recipe/authorDetail.html', {'author': author})

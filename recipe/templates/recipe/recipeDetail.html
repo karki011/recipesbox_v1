@@ -1,5 +1,17 @@
-<h2>Recipe detail page</h2>
-<p>{{recipe.id}}</p>
-<p>{{recipe.title}}</p>
-<p>{{recipe.description}}</p>
-<p>{{recipe.time_required}}</p>
+{% extends 'base.html' %} {% block content %}
+
+<div class="card">
+  <h5 class="card-header">Recipe details</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ recipe.title }}</h5>
+    <p class="card-text">
+      Description: {{ recipe.description }}
+    </p>
+    <a
+      href="{% url 'recipes:authorDetail' recipe.author.id %}"
+      class="btn btn-primary"
+      >Recipe by : {{ recipe.author }}</a
+    >
+  </div>
+</div>
+{% endblock %}
