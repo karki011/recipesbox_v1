@@ -16,7 +16,7 @@
       <ul>
       {% for recipe in recipes %}
       {% if author.id == recipe.author.id %}
-          <li>{{recipe.title}}</li>
+          <li> <a href="{% url 'recipes:recipe_detail' recipe.id %}">{{recipe.title}}</a></li>
       {% endif %}
       {% endfor %}
       </ul>
