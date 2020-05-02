@@ -1,2 +1,6 @@
-
-<h1>Home html</h1>
+{% for recipe in recipes %}
+<h3>
+  <a href="">{{recipe.title}}</a>
+  {{recipe.id}}
+</h3>
+{% endfor %}
