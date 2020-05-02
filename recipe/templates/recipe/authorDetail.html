@@ -9,6 +9,18 @@
     <p class="card-text">
       {{author.bio}}
     </p>
+    <ul>
+      <li>
+        List of Recipes:
+      </li>
+      <ul>
+      {% for recipe in recipes %}
+      {% if author.id == recipe.author.id %}
+          <li>{{recipe.title}}</li>
+      {% endif %}
+      {% endfor %}
+      </ul>
+    </ul>
     <a href="/" class="btn btn-primary">Go home</a>
   </div>
 </div>
