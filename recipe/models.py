@@ -16,6 +16,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     time_required = models.CharField(max_length=30)
+    instructions = models.TextField(default="Instruction coming soon.")
 
     def __str__(self):
         return (self.title)
