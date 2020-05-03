@@ -7,6 +7,10 @@
     <p class="card-text">
       Description: {{ recipe.description }}
     </p>
+    <p class="card-text">
+     <strong style="color: red;"> Time required: {{ recipe.time_required }}</strong> <br> How to make melt in your mouth chicken:
+      <p>{{recipe.instructions }}</p>
+    </p>
     <a
       href="{% url 'recipes:authorDetail' recipe.author.id %}"
       class="btn btn-primary"
