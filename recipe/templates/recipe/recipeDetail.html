@@ -1,21 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="card">
-  <h5 class="card-header">Recipe details</h5>
+<div class="card" style="width: 40rem;">
+  {% if recipe.imageUrl %}
+  <p
+    style="background-image: url({{recipe.imageUrl}});height: 200px; background-repeat: no-repeat;"
+    class="card-img-top img-thumbnail"
+  ></p>
+  {% endif %}
+
   <div class="card-body">
     <h5 class="card-title">{{ recipe.title }}</h5>
-    <p class="card-text">
-      Description: {{ recipe.description }}
-    </p>
-    <p class="card-text">
-     <strong style="color: red;"> Time required: {{ recipe.time_required }}</strong> <br> How to make melt in your mouth chicken:
-      <p>{{recipe.instructions }}</p>
-    </p>
+    <p class="card-text">{{ recipe.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">How to make melt in your mouth chicken:</li>
+    <li class="list-group-item">
+      <strong style="color: red;">
+        Time required: {{ recipe.time_required }}</strong
+      >
+    </li>
+    <li class="list-group-item">{{recipe.instructions }}</li>
+  </ul>
+  <div class="card-body">
     <a
       href="{% url 'recipes:authorDetail' recipe.author.id %}"
-      class="btn btn-primary"
+      class="card-link"
       >Recipe by : {{ recipe.author }}</a
     >
+    <a href="/" class="card-link">Go home</a>
   </div>
 </div>
 {% endblock %}

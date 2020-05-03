@@ -1,10 +1,15 @@
-{% extends 'base.html' %} {% block content %}
- {% for recipe in recipes %}
+{% extends 'base.html' %} {% block content %} {% for recipe in recipes %}
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">
       <a href="{% url 'recipes:recipe_detail' recipe.id %}">{{recipe.title}}</a>
+      <span
+        ><img
+          style="height: 80px; width: 80px;"
+          src="{{recipe.imageUrl}}"
+          alt=""
+      /></span>
     </h1>
   </div>
 </div>
