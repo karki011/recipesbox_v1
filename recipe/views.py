@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect
+
 from .models import Recipe, Author
+from .forms import RecipeAddForm, AuthorAddForm
 
 
 def index(request):
@@ -8,8 +10,9 @@ def index(request):
 
 
 def recipe_detail(request, recipe_id):
+    html = 'recipe/recipeDetail.html'
     recipe = get_object_or_404(Recipe, pk=recipe_id)
-    return render(request, 'recipe/recipeDetail.html', {'recipe': recipe})
+    return render(request, html, {'recipe': recipe})
 
 
 def author_detail(request, author_id):
@@ -19,3 +22,50 @@ def author_detail(request, author_id):
         'author': author,
         'recipes': recipes,
     })
+
+
+def add_author_view(request):
+    html = "generic_form.html"
+    form = AuthorAddForm()
+    if request.method == "POST":
+        form = AuthorAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse("recipes:index"))
+
+    return render(request, html, {'form': form})
+
+
+def add_recipe_view(request):
+    html = "generic_form.html"
+    form = RecipeAddForm()
+    if request.method == "POST":
+        form = RecipeAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse("recipes:index"))
+
+    return render(request, html, {'form': form})
+
+
+def delete_recipe(request, recipe_id):
+    html = "recipe/recipeDelete.html"
+    recipe_to_delete = get_object_or_404(Recipe, id=recipe_id)
+    if request.method == "POST":
+        recipe_to_delete.delete()
+        return HttpResponseRedirect(reverse("recipes:index"))
+
+    return render(request, html)
+
+
+def update_recipe(request, recipe_id):
+    html = "generic_form.html"
+    recipe = Recipe.objects.get(id=recipe_id)
+
+    form = RecipeAddForm(instance=recipe)
+    if request.method == "POST":
+        form = RecipeAddForm(request.POST, instance=recipe)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse("recipes:index"))
+    return render(request, html, {'form': form})

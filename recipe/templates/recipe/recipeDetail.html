@@ -27,7 +27,17 @@
       class="card-link"
       >Recipe by : {{ recipe.author }}</a
     >
-    <a href="/" class="card-link">Go home</a>
+
+    <form action="{% url 'recipes:deleterecipe' recipe.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'recipes:updaterecipe' recipe.id %}" class="card-link"
+      >Update</a
+    >
+
+    <a href="{% url 'recipes:index' %}" class="card-link">Go home</a>
   </div>
 </div>
+
 {% endblock %}

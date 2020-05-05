@@ -1,0 +1,8 @@
+{% extends 'base.html' %} {% block content %}
+
+<p>Are you sure you want to delete "{{recipe_to_delete}}"</p>
+<form action="" method="post">
+  {% csrf_token %} {{recipe_to_update}}
+  <button type="submit">Delete</button>
+</form>
+{% endblock content %}
