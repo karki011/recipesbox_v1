@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <form method="POST" class="form-group">
-  {% csrf_token %} {{ form.as_p }}
+  {% csrf_token %}
+  <table class="table table-dark">
+    {{ form }}
+  </table>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
