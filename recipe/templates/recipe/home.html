@@ -1,16 +1,20 @@
-{% extends 'base.html' %} {% block content %} {% for recipe in recipes %}
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">
-      <a href="{% url 'recipes:recipe_detail' recipe.id %}">{{recipe.title}}</a>
-      <span
-        ><img
-          style="height: 80px; width: 80px;"
-          src="{{recipe.imageUrl}}"
-          alt=""
-      /></span>
-    </h1>
+{% extends 'base.html' %} {% block content %}
+<div class="card-deck recipe_cards">
+  {% for recipe in recipes %}
+  <div class="card">
+    <img class="card-img-top image_receipe_card" src="{{recipe.imageUrl}}" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title">{{recipe.title}}</h5>
+      <p class="card-text">
+        Recipe By: {{recipe.author}}
+      </p>
+      <a
+        href="{% url 'recipes:recipe_detail' recipe.id %}"
+        class="btn btn-primary"
+        >Read More</a
+      >
+    </div>
   </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endblock content %}
+{% endblock content %}

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap");
+
+nav {
+  height: 90px !important;
+}
+.receipes_box_nav {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  font-family: "IBM Plex Mono", monospace;
+}
+.add_author_add_recipe_btn {
+  margin: 2%;
+}
+.card.title {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500 !important;
+}
+.card-text {
+  font-family: "IBM Plex Mono", monospace;
+}
+/* home.html */
+
+.image_receipe_card {
+  height: 312px;
+  width: 200px;
+}
