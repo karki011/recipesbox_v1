@@ -5,14 +5,16 @@ from .forms import RecipeAddForm, AuthorAddForm
 
 
 def index(request):
+    imageSrc = "https://images.unsplash.com/photo-1496262967815-132206202600?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2295&q=80"
     recipes = Recipe.objects.all()
-    return render(request, 'recipe/home.html', {'recipes': recipes})
+    return render(request, 'recipe/home.html', {'recipes': recipes, 'imageSrc': imageSrc})
 
 
 def recipe_detail(request, recipe_id):
+    imageSrc = "https://images.unsplash.com/photo-1496262967815-132206202600?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2295&q=80"
     html = 'recipe/recipeDetail.html'
     recipe = get_object_or_404(Recipe, pk=recipe_id)
-    return render(request, html, {'recipe': recipe})
+    return render(request, html, {'recipe': recipe, 'imageSrc': imageSrc})
 
 
 def author_detail(request, author_id):

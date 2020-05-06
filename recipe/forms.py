@@ -1,23 +1,25 @@
-from django.forms import ModelForm
-from .models import Recipe, Author
+from django import forms
+from .models import Author, Recipe
 
 
 # class RecipeAddForm(forms.Form):
+#     author = forms.ModelChoiceField(queryset=Author.objects.all())
 #     title = forms.CharField(max_length=50, required=True)
 #     description = forms.CharField(widget=forms.Textarea, required=True)
 #     time_required = forms.CharField(max_length=50, required=True)
 #     instructions = forms.CharField(widget=forms.Textarea, required=True)
 #     imageUrl = forms.CharField(max_length=256, required=False)
-#     author = forms.ModelChoiceField(queryset=Author.objects.all())
 
-class RecipeAddForm(ModelForm):
+
+class RecipeAddForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        fields = '__all__'
+        fields = ['author', 'title', 'description',
+                  'time_required', 'instructions']
 
 
-class AuthorAddForm(ModelForm):
+class AuthorAddForm(forms.ModelForm):
 
     class Meta:
         model = Author

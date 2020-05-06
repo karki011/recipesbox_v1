@@ -29,7 +29,9 @@
                 If this is your first time in this site, add your self as an
                 author to post recipe.
               </p>
-              <a href="{% url 'recipes:add_author' %}" class="btn btn-primary"
+              <a
+                href="{% url 'recipes:add_author' %}"
+                class="btn btn-primary btn-block"
                 >Add Author</a
               >
             </div>
@@ -44,7 +46,9 @@
               <p class="card-text">
                 Be sure to add yourself as author, if you have not done so.
               </p>
-              <a href="{% url 'recipes:add_recipe' %}" class="btn btn-primary"
+              <a
+                href="{% url 'recipes:add_recipe' %}"
+                class="btn btn-primary btn-block"
                 >Add Recipe</a
               >
             </div>
@@ -53,7 +57,7 @@
       </div>
     </div>
 
-    <main class="container">
+    <main class="container-fluid">
       {% block content %} {% endblock %}
     </main>
 
