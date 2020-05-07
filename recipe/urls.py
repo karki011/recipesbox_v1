@@ -13,5 +13,6 @@ urlpatterns = [
          views.delete_recipe, name="deleterecipe"),
     path('recipe/update/<int:recipe_id>/',
          views.update_recipe, name="updaterecipe"),
-    path('login/', views.login_view)
+    path('login/', views.login_view, name='login_page'),
+    path('logout/', views.logout_view, name='logout_page')
 ]

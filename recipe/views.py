@@ -20,8 +20,10 @@ def login_view(request):
     return render(request, html, {'form': form})
 
 
+@login_required()
 def logout_view(request):
-    pass
+    logout(request)
+    return HttpResponseRedirect(reverse("recipes:index"))
 
 
 def index(request):

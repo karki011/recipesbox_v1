@@ -17,7 +17,14 @@
   <body>
     <nav class="navbar navbar-dark bg-info sticky-top justify-content-center">
       <a class="navbar-brand receipes_box_nav" href="/">RECEIPES BOX</a>
+      {% if request.user.is_authenticated %}
       Login in as : {{request.user.username}}
+      <button>
+     <a href="{% url 'recipes:logout_page' %}">Logout</a>
+      </button>
+      {%else%}
+      <a href="{% url 'recipes:login_page' %}">Login</a>
+      {%endif%}
     </nav>
 
     <div class="container add_author_add_recipe_btn">
