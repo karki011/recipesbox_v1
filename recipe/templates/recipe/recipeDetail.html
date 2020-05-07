@@ -6,14 +6,26 @@
   <img class="card-img-top" src="{{imageSrc}}" alt="Card image cap" />
 
   {% endif %}
-
+ <div class="card-body">
+    <h5 class="card-title">{{ recipe.title }}</h5>
+    <p class="card-text">{{ recipe.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">How to make melt in your mouth chicken:</li>
+    <li class="list-group-item">
+      <strong style="color: red;">
+        Time required: {{ recipe.time_required }}</strong
+      >
+    </li>
+    <li class="list-group-item">{{recipe.instructions }}</li>
+  </ul>
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a
+      href="{% url 'recipes:authorDetail' recipe.author.id %}"
+      class="card-link"
+      >Recipe by : {{ recipe.author }}</a
+    >
+    <a href="{%url 'recipes:index'%}" class="card-link">Go home</a>
   </div>
 </div>
 

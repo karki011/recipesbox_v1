@@ -1,11 +1,13 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 
 
 class Author(models.Model):
     name = models.CharField(max_length=30)
     bio = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -17,7 +19,8 @@ class Recipe(models.Model):
     description = models.TextField()
     time_required = models.CharField(max_length=30)
     instructions = models.TextField(default="Instruction coming soon.")
-    imageUrl = models.TextField(default='')
+    imageUrl = models.TextField(default='https://d2ebzu6go672f3.cloudfront.net/media/content/images'
+                                        '/p3_MedDiet_W1806_gi667751254.jpg')
 
     def __str__(self):
-        return (self.title)
+        return self.title

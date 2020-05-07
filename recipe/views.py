@@ -20,6 +20,10 @@ def login_view(request):
     return render(request, html, {'form': form})
 
 
+def signup_view(request):
+    pass
+
+
 @login_required()
 def logout_view(request):
     logout(request)

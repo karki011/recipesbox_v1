@@ -23,7 +23,8 @@
      <a href="{% url 'recipes:logout_page' %}">Logout</a>
       </button>
       {%else%}
-      <a href="{% url 'recipes:login_page' %}">Login</a>
+      <a class="navbar-brand" href="{% url 'recipes:login_page' %}">Login</a>
+      <a class="navbar-brand" href="{% url 'recipes:login_page' %}">Signup</a>
       {%endif%}
     </nav>
 
