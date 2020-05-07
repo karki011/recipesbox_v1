@@ -15,7 +15,8 @@ def login_view(request):
             user = authenticate(request, username=data['username'], password=data['password'])
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse("recipes:index"))
+
+                return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
     return render(request, html, {'form': form})
 
 
