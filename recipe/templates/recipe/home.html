@@ -1,4 +1,48 @@
 {% extends 'base.html' %} {% block content %}
+<div class="container add_author_add_recipe_btn">
+      <div class="row">
+        {% if request.user.is_staff %}
+
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+
+              <h5 class="card-title">Lets Add Author.</h5>
+              <p class="card-text">
+                If this is your first time in this site, add your self as an
+                author to post recipe.
+              </p>
+              <a
+                href="{% url 'recipes:add_author' %}"
+                class="btn btn-primary btn-block"
+                >Add Author</a
+              >
+            </div>
+          </div>
+        </div>
+        {%endif%}
+
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                Are you ready to add recipe to recipes box?
+              </h5>
+              <p class="card-text">
+                Be sure to add yourself as author, if you have not done so.
+              </p>
+              <a
+                href="{% url 'recipes:add_recipe' %}"
+                class="btn btn-primary btn-block"
+                >Add Recipe</a
+              >
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
 <div class="card-deck">
   {% for recipe in recipes %}
   <div class="card">

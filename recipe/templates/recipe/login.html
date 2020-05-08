@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
   <form>
+  {% csrf_token %}
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRed
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.auth.models import Group
 from .decorators import unauthenticated_user, allowed_users
 from .models import Recipe, Author
 from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
@@ -32,7 +32,12 @@ def register_view(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            print(username)
+            group = Group.objects.get(name='author')
+            user.groups.add(group)
+
             return HttpResponseRedirect(reverse("recipes:login_page"))
 
     return render(request, html, {'form': form})
