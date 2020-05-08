@@ -30,9 +30,11 @@
 
     <div class="container add_author_add_recipe_btn">
       <div class="row">
+        {% if user.groups.all.0.name == "admin" %}
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
+
               <h5 class="card-title">Lets Add Author.</h5>
               <p class="card-text">
                 If this is your first time in this site, add your self as an
@@ -46,6 +48,9 @@
             </div>
           </div>
         </div>
+        {%endif%}
+        {% if user.groups.all.0.name == "author" or user.groups.all.0.name == "admin" %}
+
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -63,6 +68,8 @@
             </div>
           </div>
         </div>
+        {%endif%}
+
       </div>
     </div>
 

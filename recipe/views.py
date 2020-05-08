@@ -1,43 +1,41 @@
 from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Recipe, Author
-from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
 from django.contrib import messages
 
+from .decorators import unauthenticated_user, allowed_users
+from .models import Recipe, Author
+from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
 
+
+@unauthenticated_user
 def login_view(request):
     html = "generic_form.html"
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("recipes:index"))
-    else:
-        form = LoginForm()
-        if request.method == 'POST':
-            form = LoginForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                user = authenticate(request, username=data['username'], password=data['password'])
-                if user:
-                    login(request, user)
-                    return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
-                else:
-                    messages.info(request, 'Your email or Password is incorrect.')
-        return render(request, html, {'form': form})
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = authenticate(request, username=data['username'], password=data['password'])
+            if user:
+                login(request, user)
+                return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
+            else:
+                messages.info(request, 'Your email or Password is incorrect.')
+    return render(request, html, {'form': form})
 
 
+@unauthenticated_user
 def register_view(request):
     html = "generic_form.html"
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("recipes:index"))
-    else:
-        form = RegisterUserForm()
-        if request.method == "POST":
-            form = RegisterUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect(reverse("recipes:login_page"))
+    form = RegisterUserForm()
+    if request.method == "POST":
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("recipes:login_page"))
 
-        return render(request, html, {'form': form})
+    return render(request, html, {'form': form})
 
 
 def logout_view(request):
@@ -70,6 +68,7 @@ def author_detail(request, author_id):
 
 
 @login_required()
+@allowed_users(allowed_roles=['admin'])
 def add_author_view(request):
     html = "generic_form.html"
     form = AuthorAddForm()
