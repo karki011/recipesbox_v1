@@ -2,32 +2,47 @@ from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRed
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Recipe, Author
-from .forms import RecipeAddForm, AuthorAddForm, LoginForm
+from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
+from django.contrib import messages
 
 
 def login_view(request):
     html = "generic_form.html"
-    form = LoginForm()
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            user = authenticate(request, username=data['username'], password=data['password'])
-            if user:
-                login(request, user)
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("recipes:index"))
+    else:
+        form = LoginForm()
+        if request.method == 'POST':
+            form = LoginForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                user = authenticate(request, username=data['username'], password=data['password'])
+                if user:
+                    login(request, user)
+                    return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
+                else:
+                    messages.info(request, 'Your email or Password is incorrect.')
+        return render(request, html, {'form': form})
 
-                return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
-    return render(request, html, {'form': form})
+
+def register_view(request):
+    html = "generic_form.html"
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("recipes:index"))
+    else:
+        form = RegisterUserForm()
+        if request.method == "POST":
+            form = RegisterUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse("recipes:login_page"))
+
+        return render(request, html, {'form': form})
 
 
-def signup_view(request):
-    pass
-
-
-@login_required()
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("recipes:index"))
+    return HttpResponseRedirect(reverse("recipes:login_page"))
 
 
 def index(request):
