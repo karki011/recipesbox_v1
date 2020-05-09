@@ -1,7 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap");
 
+html, body{
+  font-family: "IBM Plex Mono", monospace !important;
+
+}
 nav {
   height: 90px !important;
+  margin-bottom: 2%;
+}
+.nav_a_tag, .nav_a_recipe, .nav_a_logout{
+    font-weight: 600 !important;
+    color: white;
+    font-size: 1.5rem;
+}
+.nav_a_tag:hover{
+    color: yellow;
+}
+.nav_a_recipe:hover{
+    color: green;
+}
+.nav_a_logout:hover{
+    color: red;
+}
+.icon_user{
+color: darkorange;
+}
+.username{
+    color: darkmagenta;
+    padding-left: 19px;
+    font-size: 1.4em;
 }
 .receipes_box_nav {
   font-size: 36px !important;
@@ -25,4 +52,6 @@ nav {
   width: 200px;
 }
 
-/* login.html */
+/* userpage */
+
+

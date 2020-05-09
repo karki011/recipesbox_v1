@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container user_page_card">
+  <div class="row">
+   <div class="card-deck">
+     {% for recipe in  recipe_users %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{recipe.title}}</h5>
+             <h6 class="card-subtitle mb-2 text-muted">Creates: {{recipe.date_created}}</h6>
+             <p class="card-text">Description: {{recipe.description}}</p>
+            <p class="card-text"><small class="text-muted">Instructions: {{recipe.instructions}}</small></p>
+          </div>
+      </div>
+
+
+     {% endfor %}
+      </div>
+   </div>
+</div>
+
+{% endblock content %}

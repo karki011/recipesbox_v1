@@ -15,23 +15,45 @@
     <title>Recipes Box</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-info sticky-top justify-content-center">
+    <nav class="navbar navbar-dark bg-info sticky-top ">
       <a class="navbar-brand receipes_box_nav" href="/">RECEIPES BOX</a>
       {% if request.user.is_authenticated %}
-      Login in as : {{request.user.username}}
-      <button>
-     <a href="{% url 'recipes:logout_page' %}">Logout</a>
-      </button>
+      <i class="far fa-user fa-2x icon_user" ><span class="username">{{request.user.username}}</span></i>
+
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link nav_a_recipe" href="{% url 'recipes:userpage' %}">My Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav_a_logout" href="{% url 'recipes:logout_page' %}">Logout</a>
+            </li>
+        </ul>
+
       {%else%}
-      <a class="navbar-brand" href="{% url 'recipes:login_page' %}">Login</a>
-      <a class="navbar-brand" href="{% url 'recipes:register_page' %}">Signup</a>
+        <ul class="nav">
+            <li class="nav-item">
+      <a class="nav-link nav-brand nav_a_tag" href="{% url 'recipes:login_page' %}">Login</a>
+                            </li>
+            <li class="nav-item">
+      <a class="nav-link nav_a_tag" href="{% url 'recipes:register_page' %}">Signup</a>
+                        </li>
+        </ul>
       {%endif%}
     </nav>
+
+
+
+
 
 
     <main class="container-fluid">
       {% block content %} {% endblock %}
     </main>
+
+
+<!--    font awesome-->
+        <script src="https://kit.fontawesome.com/376d9e7b35.js" crossorigin="anonymous"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
