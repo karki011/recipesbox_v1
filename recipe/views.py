@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 from .decorators import unauthenticated_user, allowed_users
 from .models import Recipe, Author
 from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
+from django.contrib.auth.models import User
 
 
 @unauthenticated_user
@@ -105,7 +106,7 @@ def delete_recipe(request, recipe_id):
     recipe_to_delete = get_object_or_404(Recipe, id=recipe_id)
     if request.method == "POST":
         recipe_to_delete.delete()
-        return HttpResponseRedirect(reverse("recipes:index"))
+        return HttpResponseRedirect(reverse(" "))
 
     return render(request, html)
 
@@ -122,3 +123,16 @@ def update_recipe(request, recipe_id):
             form.save()
         return HttpResponseRedirect(reverse("recipes:index"))
     return render(request, html, {'form': form})
+
+
+#
+@login_required()
+@allowed_users(allowed_roles=['author'])
+def userpage(request):
+    html = "recipe/user_page.html"
+    users = Author.objects.all()
+    curr_user = User.objects.get(username=request.user)
+    db_user = Author.objects.get(user=curr_user)
+    recipe_users = Recipe.objects.filter(author=db_user)
+
+    return render(request, html, {'user': users, 'recipe_users': recipe_users})
