@@ -9,7 +9,6 @@ from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
 from django.contrib.auth.models import User
 
 
-
 @unauthenticated_user
 def login_view(request):
     # html = "generic_form.html"
@@ -81,7 +80,8 @@ def author_detail(request, author_id):
 @login_required()
 @allowed_users(allowed_roles=['admin'])
 def add_author_view(request):
-    html = "generic_form.html"
+    # html = "generic_form.html"
+    html = "recipe/addauthor.html"
     form = AuthorAddForm()
     if request.method == "POST":
         form = AuthorAddForm(request.POST)
@@ -141,3 +141,8 @@ def userpage(request):
     recipe_users = Recipe.objects.filter(author=db_user)
 
     return render(request, html, {'user': users, 'recipe_users': recipe_users})
+
+
+def accessdenied(request):
+    html = "recipe/accessdenied.html"
+    return render(request, html)
