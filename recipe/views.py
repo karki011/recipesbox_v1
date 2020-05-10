@@ -32,7 +32,8 @@ def login_view(request):
 
 @unauthenticated_user
 def register_view(request):
-    html = "generic_form.html"
+    # html = "generic_form.html"
+    html = "recipe/register_user.html"
     form = RegisterUserForm()
     if request.method == "POST":
         form = RegisterUserForm(request.POST)

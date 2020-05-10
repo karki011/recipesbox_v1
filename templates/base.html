@@ -56,22 +56,23 @@
 <main class="container">
     {% block content %} {% endblock %}
 </main>
+{% if request.user.is_authenticated %}
 <div class="navbar footer bg-info justify-content-center">
 
     <nav class="navbar navbar-light  ">
         <ul class="navbar-nav ">
 
-            {% if request.user.is_authenticated %}
+
             <a class="nav-link nav_a  " href="{% url 'recipes:userpage' %}">
                 Hello, {{request.user.username}}
             </a>
-            {% endif%}
         </ul>
     </nav>
 
 
 </div>
 
+            {% endif%}
 
 <!--    font awesome-->
 <script src="https://kit.fontawesome.com/376d9e7b35.js" crossorigin="anonymous"></script>
