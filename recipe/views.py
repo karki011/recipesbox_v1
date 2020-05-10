@@ -80,8 +80,8 @@ def author_detail(request, author_id):
 @login_required()
 @allowed_users(allowed_roles=['admin'])
 def add_author_view(request):
-    html = "generic_form.html"
-    # html = "recipe/addauthor.html"
+    # html = "generic_form.html"
+    html = "recipe/addauthor.html"
     form = AuthorAddForm()
     if request.method == "POST":
         form = AuthorAddForm(request.POST)
@@ -94,9 +94,9 @@ def add_author_view(request):
 
 @login_required()
 def add_recipe_view(request):
-    html = "generic_form.html"
-
-    # html = "recipe/addrecipe.html"
+    # html = "generic_form.html"
+    #
+    html = "recipe/addrecipe.html"
     form = RecipeAddForm()
     if request.method == "POST":
         form = RecipeAddForm(request.POST)
