@@ -40,12 +40,7 @@ def register_view(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             print(username)
-            group = Group.objects.get(name='author')
-            user.groups.add(group)
-            Author.objects.create(
-                user=user,
-                name=user.username
-            )
+
 
             return HttpResponseRedirect(reverse("recipes:login_page"))
 
