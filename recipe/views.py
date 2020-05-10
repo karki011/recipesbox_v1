@@ -9,20 +9,24 @@ from .forms import RecipeAddForm, AuthorAddForm, LoginForm, RegisterUserForm
 from django.contrib.auth.models import User
 
 
+
 @unauthenticated_user
 def login_view(request):
-    html = "generic_form.html"
+    # html = "generic_form.html"
+    html = "recipe/login.html"
     form = LoginForm()
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            username = form.cleaned_data.get('username')
+            print('username', username)
             user = authenticate(request, username=data['username'], password=data['password'])
             if user:
                 login(request, user)
                 return HttpResponseRedirect(request.GET.get('next', reverse("recipes:index")))
             else:
-                messages.info(request, 'Your email or Password is incorrect.')
+                messages.error(request, 'Your email or Password is incorrect.')
     return render(request, html, {'form': form})
 
 
