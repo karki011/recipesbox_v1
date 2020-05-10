@@ -2,17 +2,14 @@
 
 html, body{
   font-family: "IBM Plex Mono", monospace !important;
-
+background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80");
 }
 nav {
   height: 90px !important;
   margin-bottom: 2%;
+
 }
-.nav_a_tag, .nav_a_recipe, .nav_a_logout{
-    font-weight: 600 !important;
-    color: white;
-    font-size: 1.5rem;
-}
+
 .nav_a_tag:hover{
     color: yellow;
 }
@@ -25,15 +22,18 @@ nav {
 .icon_user{
 color: darkorange;
 }
-.username{
-    color: darkmagenta;
+.nav_a{
     padding-left: 19px;
     font-size: 1.4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white !important
 }
 .receipes_box_nav {
   font-size: 36px !important;
   font-weight: 700 !important;
   font-family: "IBM Plex Mono", monospace;
+  color: white !important
 }
 .add_author_add_recipe_btn {
   margin: 2%;
@@ -54,4 +54,21 @@ color: darkorange;
 
 /* userpage */
 
+.flex-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.child {
+  width: 20%;
+}
 
+.author-recipe-card{
+    height: 200px;
+}
+.footer{
+margin-top: 3%;
+height: 90px;
+background:red;
+bottom: 0;
+}

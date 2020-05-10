@@ -15,41 +15,49 @@
     <title>Recipes Box</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-info sticky-top ">
-      <a class="navbar-brand receipes_box_nav" href="/">RECEIPES BOX</a>
-      {% if request.user.is_authenticated %}
-      <i class="far fa-user fa-2x icon_user" ><span class="username">{{request.user.username}}</span></i>
+  <nav class="navbar navbar-expand-lg navbar-light  bg-info sticky-top">
+  <a class="navbar-brand receipes_box_nav" href="/">RECEIPES BOX</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 
+    <ul class="navbar-nav ">
+         {% if request.user.is_authenticated %}
+<!--         <li class="nav-item">-->
+<!--           <a class="nav-link nav_a" href="{% url 'recipes:userpage' %}">Hello,  {{request.user.username}}</a>-->
 
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link nav_a_recipe" href="{% url 'recipes:userpage' %}">My Recipes</a>
+<!--            </li>-->
+
+        <li class="nav-item">
+                <a class="nav-link nav_a " href="{% url 'recipes:userpage' %}">My Recipes</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link nav_a_logout" href="{% url 'recipes:logout_page' %}">Logout</a>
-            </li>
-        </ul>
 
-      {%else%}
-        <ul class="nav">
             <li class="nav-item">
-      <a class="nav-link nav-brand nav_a_tag" href="{% url 'recipes:login_page' %}">Login</a>
+                <a class="nav-link nav_a" href="{% url 'recipes:logout_page' %}">Logout</a>
+            </li>
+         {%else%}
+         <li class="nav-item">
+      <a class="nav-link nav-brand nav_a" href="{% url 'recipes:login_page' %}">Login</a>
                             </li>
             <li class="nav-item">
-      <a class="nav-link nav_a_tag" href="{% url 'recipes:register_page' %}">Signup</a>
+      <a class="nav-link nav_a" href="{% url 'recipes:register_page' %}">Signup</a>
                         </li>
-        </ul>
+
+
       {%endif%}
-    </nav>
+    </ul>
+  </div>
+</nav>
 
 
 
-
-
-
-    <main class="container-fluid">
+    <main class="container">
       {% block content %} {% endblock %}
     </main>
+<div class="navbar footer bg-info">
+
+</div>
 
 
 <!--    font awesome-->
