@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap");
 
 html, body{
+
   font-family: "IBM Plex Mono", monospace !important;
 background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80");
 }
@@ -63,12 +64,19 @@ justify-content: space-around;
   width: 20%;
 }
 
-.author-recipe-card{
-    height: 200px;
+.card{
+margin-top: 1% !important;
+}
+main{
+margin-bottom: 10%
 }
 .footer{
-margin-top: 3%;
-height: 90px;
-background:red;
-bottom: 0;
+    margin-top: 3%;
+    position: fixed !important;
+   bottom: 0 !important;
+   width: 100%;
+   color: white;
+   text-align: center;
+   height:90px;
+
 }
