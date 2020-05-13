@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-12 login-key">
+                <i class="fa fa-utensils" aria-hidden="true"></i>
+            </div>
+            <div class="col-lg-12 login-title">
+                Add Recipe
+            </div>
+
+            <div class="col-lg-12 login-form">
+                <div class="col-lg-12 login-form">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label class="form-control-label" >AUTHOR</label>
+                            <select name="author" required>
+                                {% for author in form.author %}
+                                <option value="{{ author.id }}">{{ author }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">NAME</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">DESCRIPTION</label>
+                            <textarea class="form-control" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">TIME REQUIRED</label>
+                            <input type="text" class="form-control" name="time_required" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">INSTRUCTION</label>
+                            <textarea class="form-control" name="instructions" required></textarea>
+                        </div>
+
+                        <div class="col-lg-12 loginbttm text-warning text-center">
+                            {% for message in messages%}
+                            <p>{{ message}}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 login-btm login-text">
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                                <button type="submit" class="btn btn-outline-primary">ADD RECIPE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
