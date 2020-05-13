@@ -25,7 +25,7 @@ SECRET_KEY = 'inbft_*!j$#flcwr1fzzhul=(d+$)s9xwa^+=3mz$_pqz$9tkk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['receipebox.herokuapp.com']
 
 LOGIN_URL = "/login/"
 # Application definition
