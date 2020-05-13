@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +25,8 @@ SECRET_KEY = 'inbft_*!j$#flcwr1fzzhul=(d+$)s9xwa^+=3mz$_pqz$9tkk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['receipebox.herokuapp.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['receipebox.herokuapp.com']
+# ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "/login/"
 # Application definition
@@ -127,4 +126,3 @@ STATICFILES_DIRS = [
 # STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 # heroku css js file
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-django_heroku.settings(locals())
