@@ -1,18 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap");
 
 html, body{
-  font-family: "IBM Plex Mono", monospace !important;
 
+  font-family: "IBM Plex Mono", monospace !important;
+  background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&auto=format&fit=crop&w=2255&q=80");
 }
 nav {
   height: 90px !important;
   margin-bottom: 2%;
+
 }
-.nav_a_tag, .nav_a_recipe, .nav_a_logout{
-    font-weight: 600 !important;
-    color: white;
-    font-size: 1.5rem;
-}
+
 .nav_a_tag:hover{
     color: yellow;
 }
@@ -25,15 +23,18 @@ nav {
 .icon_user{
 color: darkorange;
 }
-.username{
-    color: darkmagenta;
+.nav_a{
     padding-left: 19px;
     font-size: 1.4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white !important
 }
 .receipes_box_nav {
   font-size: 36px !important;
   font-weight: 700 !important;
   font-family: "IBM Plex Mono", monospace;
+  color: white !important
 }
 .add_author_add_recipe_btn {
   margin: 2%;
@@ -51,7 +52,216 @@ color: darkorange;
   height: 312px;
   width: 200px;
 }
+/* login page */
 
+.login-box {
+    margin-top: 75px;
+    height: auto;
+    background: #1A2226;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ECF0F5;
+}
+
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
+
+input[type=text] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+}
+
+input[type=password] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #ECF0F5;
+}
+
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.form-control-label {
+    font-size: 10px;
+    color: #6C6C6C;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-outline-primary {
+    border-color: #0DB8DE;
+    color: #0DB8DE;
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn-outline-primary:hover {
+    background-color: #0DB8DE;
+    right: 0px;
+}
+
+.login-btm {
+    float: left;
+}
+
+.login-button {
+    padding-right: 0px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: #A2A4A4;
+}
+
+.loginbttm {
+    padding: 0px;
+}
 /* userpage */
 
+.flex-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.child {
+  width: 20%;
+}
 
+.card{
+margin-top: 1% !important;
+}
+
+main{
+padding- bottom:20px;
+min-height: calc(100vh - 90px - 90px)
+}
+.footer{
+margin-top:4%;
+   color: white;
+   text-align: center;
+}
+
+
+/* access denied */
+
+#errorWrapper{
+  display:block;
+  position:fixed;
+  width: 100%;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+#error403{
+  width: 80vw;
+  max-width: 400px;
+  height: 80vw;
+  max-height: 400px;
+  margin: 0 auto;
+  border-radius:50%;
+  background-color: #333;
+  background-image:
+    url( 'http://coolsys.paulonavarro.com/css/images/403.svg'),
+    url( 'http://coolsys.paulonavarro.com/css/images/403stripe.svg');
+  background-size: 85%, 15%;
+  background-repeat: no-repeat, repeat-x;
+  background-position: 800% 100%, 130% 75%;
+  box-shadow: inset 0 0 10px 3px #000;
+  animation: grow 1s 1, security 1s 1 0.5s forwards;
+}
+#errorText{
+  margin: 0;
+  text-align: center;
+  color: red;
+  font-size: 40px;
+}
+.red{
+  color: rgb(255, 50, 50);
+  animation: glow 2s infinite;
+}
+@keyframes grow{
+  0%{
+    width: 0;
+    height: 0;
+  }
+}
+@keyframes security{
+  0%{
+    background-position: 800% 100%, 130% 75%;
+  }
+  100%{
+    background-position:50% 100%, 130% 75%;
+  }
+}
+@keyframes glow{
+  0%{
+     text-shadow: 0 0 3px rgba(255, 0,0,0.8);
+  }
+  50%{
+     text-shadow: 0 0 20px rgba(255, 0,0,0.8);
+  }
+  100%{
+     text-shadow: 0 0 3px rgba(255, 0,0,0.8);
+  }
+}
