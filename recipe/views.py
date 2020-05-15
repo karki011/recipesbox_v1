@@ -40,6 +40,8 @@ def register_view(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             print(username)
+
+
             return HttpResponseRedirect(reverse("recipes:login_page"))
 
     return render(request, html, {'form': form})
@@ -47,7 +49,7 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("recipes:login_page"))
+    return HttpResponseRedirect(reverse("recipes:index"))
 
 
 def index(request):
@@ -112,7 +114,7 @@ def delete_recipe(request, recipe_id):
     recipe_to_delete = get_object_or_404(Recipe, id=recipe_id)
     if request.method == "POST":
         recipe_to_delete.delete()
-        return HttpResponseRedirect(reverse('/'))
+        return HttpResponseRedirect(reverse(" "))
 
     return render(request, html)
 
